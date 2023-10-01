@@ -2,22 +2,16 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\QuestionController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [QuestionController::class, 'index'])->name('index');
+Route::get('/questions/create', [QuestionController::class, 'create']);
+Route::get('/questions/{question}', [QuestionController::class, 'show']);
+Route::post('/questions', [QuestionController::class, 'store']);
+Route::get('/answers/{answer}', [QuestionController::class ,'show']);
+Route::post('answers', [AnswerController::class, 'store']);
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
