@@ -9,7 +9,6 @@
             <div class="content__question">
                 
                 <p>{{ $question->question }}</p>
-                <p>{{ $question->hint }}</p>
             </div>
             <div class="answer">
                 <p>{{ $answer->answer }}</p>
