@@ -3,13 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
 
 Route::get('/', [QuestionController::class, 'index'])->name('index');
 Route::get('/questions/create', [QuestionController::class, 'create']);
 Route::get('/questions/{question}', [QuestionController::class, 'show']);
 Route::post('/questions', [QuestionController::class, 'store']);
 Route::get('/answers/{answer}', [QuestionController::class ,'show']);
-Route::post('answers', [AnswerController::class, 'store']);
+Route::get('/', [AnswerController::class, 'show']);
+Route::post('/answers', [AnswerController::class, 'store']);
 
 
 

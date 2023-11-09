@@ -9,13 +9,17 @@ class AnswerController extends Controller
 {
     public function show(Answer $answer)
     {
-        return view('answers/show')->with(['answer' => $answer]);
+        return view('questions/show')->with(['Answers' => $answer->get()]);
 
     }
-    public function store(Request $request, Answer $answer)
-    {
-       $input = $request['answer'];
-       $question->fill($input)->save();
-       return redirect('/answers'.$answer->id);
-    }
+    public function store(Request $request)
+{
+  $model = new Answer();
+  $model->answer = $request->input('answer');
+  $model->question_id = $request->input('question_id');
+  $model->user_id = Auth::id();
+  $model->save();
+
+  return redirect('/answers', $answer->id);
+}
 }
